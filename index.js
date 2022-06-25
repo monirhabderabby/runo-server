@@ -17,19 +17,29 @@ async function run(){
     await client.connect();
     const blogCollection = client.db("RUNO").collection("BLOGS");
 
+    // All GET API
     app.get('/blogs', async (req, res)=> {
         const query = {};
         const result = await blogCollection.find(query).toArray();
         res.send(result)
     })
 
-    app.get('/blog/:category', async (req, res)=> {
+    app.get('/blogs/:category', async (req, res)=> {
         const category = req.params.category;
         const query = {category: category}
         const result = await blogCollection.find(query).toArray();
         res.send(result)
 
     })
+
+  //   app.get('/blogs/:id', async (req, res)=> {
+  //     const id = req.params.id;
+  //     const query = {_id:}
+      
+
+  // })
+
+    // All POST API
   }
   finally{
 
